@@ -1,0 +1,16 @@
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.exe
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.deps.json
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.runtimeconfig.json
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.runtimeconfig.dev.json
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.dll
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ref\ReportAnalysis.dll
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.pdb
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.csproj.AssemblyReference.cache
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.AssemblyInfoInputs.cache
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.AssemblyInfo.cs
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.csproj.CoreCompileInputs.cache
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.dll
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ref\ReportAnalysis.dll
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.pdb
+C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.genruntimeconfig.cache

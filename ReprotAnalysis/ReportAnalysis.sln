@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportAnalysis", "ReprotAnalysis\ReportAnalysis.csproj", "{405CB888-1217-4C5C-8D69-23EB2938315A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{405CB888-1217-4C5C-8D69-23EB2938315A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405CB888-1217-4C5C-8D69-23EB2938315A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405CB888-1217-4C5C-8D69-23EB2938315A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405CB888-1217-4C5C-8D69-23EB2938315A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F830C95C-817B-41CB-BC63-9C1A99F864BB}
+	EndGlobalSection
+EndGlobal
