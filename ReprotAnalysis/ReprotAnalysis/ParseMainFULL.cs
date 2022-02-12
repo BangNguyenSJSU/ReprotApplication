@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReportAnalysis
+namespace ParseMainFULL
 {
     public class EcatReading
     {
@@ -64,7 +64,7 @@ namespace ReportAnalysis
 
         // Store Vdiff and Bias 
         public Double[] MeterVdiff = new Double[175];
-        public Double[] MeterCTout = new Double[175];
+        public Double[] MeterVbias = new Double[175];
 
 
         // Positive Index
@@ -302,11 +302,11 @@ namespace ReportAnalysis
 
                     // Convert to Double and save them 
                     MeterVdiff[counterBIAS] = Convert.ToDouble(Vdiff_Data[MeterValuePoint]);
-                    MeterCTout[counterBIAS] = Convert.ToDouble(Bias_Data[MeterValuePoint]);
+                    MeterVbias[counterBIAS] = Convert.ToDouble(Bias_Data[MeterValuePoint]);
 
                     // Round it 3 decimal digit 
                     MeterVdiff[counterBIAS] = System.Math.Round(MeterVdiff[counterBIAS],3);
-                    MeterCTout[counterBIAS] = System.Math.Round(MeterCTout[counterBIAS],3);
+                    MeterVbias[counterBIAS] = System.Math.Round(MeterVbias[counterBIAS],3);
 
                     counterBIAS++; 
                 }
@@ -314,11 +314,11 @@ namespace ReportAnalysis
                 {
                     // Convert to Double and save them 
                     MeterVdiff[counterBIAS] = Convert.ToDouble(Vdiff_Data[MeterValuePoint]);
-                    MeterCTout[counterBIAS] = Convert.ToDouble(Bias_Data[MeterValuePoint]);
+                    MeterVbias[counterBIAS] = Convert.ToDouble(Bias_Data[MeterValuePoint]);
 
                     // Round it 3 decimal digit 
                     MeterVdiff[counterBIAS] = System.Math.Round(MeterVdiff[counterBIAS], 3);
-                    MeterCTout[counterBIAS] = System.Math.Round(MeterCTout[counterBIAS], 3);
+                    MeterVbias[counterBIAS] = System.Math.Round(MeterVbias[counterBIAS], 3);
                     counterBIAS++;
 
                 }
@@ -354,7 +354,7 @@ namespace ReportAnalysis
 
 
 
-
+        // Get the pass or fail result through csv line 
         public void GetMeterResult()
         {
             // ------> Initalize the index 

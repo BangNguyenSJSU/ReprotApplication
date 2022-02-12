@@ -14,3 +14,19 @@ C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplicatio
 C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ref\ReportAnalysis.dll
 C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.pdb
 C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.genruntimeconfig.cache
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.exe
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.deps.json
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.runtimeconfig.json
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.runtimeconfig.dev.json
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.dll
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ref\ReportAnalysis.dll
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\bin\Debug\net5.0\ReportAnalysis.pdb
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.GeneratedMSBuildEditorConfig.editorconfig
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.AssemblyInfoInputs.cache
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.AssemblyInfo.cs
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.csproj.CoreCompileInputs.cache
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.dll
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ref\ReportAnalysis.dll
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.pdb
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.genruntimeconfig.cache
+C:\Bicep_Project\ReprotApplication\ReprotAnalysis\ReprotAnalysis\obj\Debug\net5.0\ReportAnalysis.csproj.AssemblyReference.cache
