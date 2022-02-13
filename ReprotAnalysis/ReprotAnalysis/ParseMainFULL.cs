@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
@@ -11,13 +12,59 @@ namespace ParseMainFULL
 {
     public class EcatReading
     {
-        public string EcatResult;
-        public string EcatResultVoutPOS;
-        public string EcatResultVoutNEG;
-        public string EcatResultVdiff;
-        public string EcatResultCTout;
+        // Store SetPoint 
+        public Double[] ClampSetPoint = new Double[175];
+        public Double[] BiasSetPoint = new Double[175];
 
-        
+        public int ClampSetPoint_Index;
+        public int BiasSetPoint_Index;
+
+        // Store the result 
+        public string[] EcatResultVoutPOS = new string[175];
+        public string[] EcatResultVoutNEG = new string[175];
+        public string[] EcatResultVdiff = new string[175];
+        public string[] EcatResultCTout = new string[175];
+
+        // Ecat Result Index 
+        public int EcatResultVoutPOS_Index;
+        public int EcatResultVoutNEG_Index;
+        public int EcatResultVdiff_Index;
+        public int EcatResultCTout_Index;
+
+
+        // Store POS (size 175)
+        public Double[] EcatVoutPOS_H = new Double[175];
+        public Double[] EcatVoutPOS_L = new Double[175];
+        public Double[] EcatVoutPOS = new Double[175];
+
+        // Store NEG
+        public Double[] EcatVoutNEG_H = new Double[175];
+        public Double[] EcatVoutNEG_L = new Double[175];
+        public Double[] EcatVoutNEG = new Double[175];
+
+        // Store Vdiff 
+        public Double[] EcatVdiff_H = new Double[175];
+        public Double[] EcatVdiff_L = new Double[175];
+        public Double[] EcatVdiff = new Double[175];
+
+        // Store CTout (Vbias)
+        public Double[] EcatCTout_H = new Double[175];
+        public Double[] EcatCTout_L = new Double[175];
+        public Double[] EcatCTout = new Double[175];
+
+
+        // Positive Index
+        public int EcatVoutPOS_Index;
+
+
+        // Negative Index
+        public int EcatVoutNEG_Index;
+
+
+        // Vdiff + Bias Index
+        public int EcatVdiff_Index;
+        public int EcatCTout_Index;
+
 
         // input for class 
         string _filePath = @"";
@@ -25,12 +72,318 @@ namespace ParseMainFULL
 
         // ---> Constructor 
         public EcatReading(string fileP, string dirP)
+            {
+                _filePath = fileP; // path to Main_FULL.csv
+                _dirPath = dirP; // Path to serial Number foler 
+
+                // ------> Initalize the index 
+                string[] csvLine = System.IO.File.ReadAllLines(_filePath);
+                int csvLine_Size = csvLine.Length;
+
+                // -------> Positive Index
+                string[] POS_Data = csvLine[csvLine_Size - 25].Split(',');
+
+                bool POS_Good_Token = POS_Data[0].Contains("Vout+");
+
+                // ------> Negative Index
+                string[] NEG_Data = csvLine[csvLine_Size - 22].Split(',');
+
+                bool NEG_Good_Token = NEG_Data[0].Contains("Vout-");
+
+                // ------> Vdiff Index + CTout Index 
+                string[] Vdiff_Data = csvLine[csvLine_Size - 21].Split(',');
+                string[] CTout_Data = csvLine[csvLine_Size - 19].Split(',');
+
+                bool Vdiff_CTout_Good_Token = Vdiff_Data[0].Contains("Vdiff") &&
+                                             CTout_Data[0].Contains("CT out");
+
+
+                // -----> Ecat Reading Result 
+                string[] POS_Result = csvLine[csvLine_Size - 33].Split(',');
+                string[] NEG_Result = csvLine[csvLine_Size - 32].Split(',');
+                string[] VCTout = csvLine[csvLine_Size - 31].Split(',');
+
+                bool EcatResult_Good_Token = POS_Result[0].Contains("Vout+") &&
+                                              NEG_Result[0].Contains("Vout-") &&
+                                              VCTout[0].Contains("Vbias");
+
+                // Checking the index + assigned Index value 
+                // Count from bottom to top because the lasted value is always stay in bottom 
+                if (POS_Good_Token && NEG_Good_Token && Vdiff_CTout_Good_Token && EcatResult_Good_Token)
+                {
+                    // POS
+                    EcatVoutPOS_Index = csvLine_Size - 25;
+                    // NEG
+                    EcatVoutNEG_Index = csvLine_Size - 22;
+                    // Vdiff
+                    EcatVdiff_Index = csvLine_Size - 21;
+                    // CTout
+                    EcatCTout_Index = csvLine_Size - 19;
+
+
+                    EcatResultVoutPOS_Index = csvLine_Size - 8;
+                    EcatResultVoutNEG_Index = csvLine_Size - 7;
+                    EcatResultVdiff_Index = csvLine_Size - 6;
+                    EcatResultCTout_Index = csvLine_Size - 5;
+
+                    // SetPoint 
+                    ClampSetPoint_Index = csvLine_Size - 3;
+                    BiasSetPoint_Index = csvLine_Size - 2;
+
+                    // Debug purpose
+                     Console.WriteLine("Ecat Reading Row Index Innit CORRECTLY");
+
+                }
+                else
+                {
+                    Console.WriteLine("Ecat Reading Row Index Innit INCORRECTLY !!!");
+                }
+         }
+        //=========================================================
+
+        public void ConvertEcatReadingInto_Double()
         {
-            _filePath = fileP;
-            _dirPath = dirP;
+            // ------> Initalize the index 
+            string[] csvLine = System.IO.File.ReadAllLines(_filePath);
+            int csvLine_Size = csvLine.Length;
+
+            // -------> Positive Index
+            string[] POS_Data = csvLine[EcatVoutPOS_Index].Split(',');
+
+
+            // ------> Negative Index
+            string[] NEG_Data = csvLine[EcatVoutNEG_Index].Split(',');
+
+
+            // ------> Vdiff Index + Bias Index 
+            string[] Vdiff_Data = csvLine[EcatVdiff_Index].Split(',');
+            string[] CTout_Data = csvLine[EcatCTout_Index].Split(',');
+
+            // ----> SetPoint
+            string[] Clamp = csvLine[ClampSetPoint_Index].Split(',');
+            string[] Bias = csvLine[BiasSetPoint_Index].Split(',');
+
+            // Trim the special Character '|'
+            char[] charToTrim = { '|' };
+
+            int counterPOS = 0;
+            int counterNEG = 0;
+            int counterBIAS = 0;
+            int counterSetPoint = 0;
+
+            for (int EcatValuePoint = 1; EcatValuePoint < Vdiff_Data.Length; EcatValuePoint++)
+            {
+
+                bool POS_NeedToTrim = POS_Data[EcatValuePoint].Contains('|');
+
+                bool NEG_NeedToTrim = NEG_Data[EcatValuePoint].Contains('|');
+
+                bool Vdiff_Bias_NeedToTrim = Vdiff_Data[EcatValuePoint].Contains('|') &&
+                                             CTout_Data[EcatValuePoint].Contains('|');
+
+                bool SetPointNeedToTrim = Clamp[EcatValuePoint].Contains('|') &&
+                                          Bias[EcatValuePoint].Contains('|');
+                // ----> Positve 
+                if (POS_NeedToTrim)
+                {
+                    // Trim Special Char
+
+                    POS_Data[EcatValuePoint] = POS_Data[EcatValuePoint].Trim(charToTrim);
+
+                    // Convert to Double and save them 
+
+                    EcatVoutPOS[counterPOS] = Convert.ToDouble(POS_Data[EcatValuePoint]);
+
+                    // Round it 3 decimal digit 
+                    EcatVoutPOS[counterPOS] = System.Math.Round(EcatVoutPOS[counterPOS], 3);
+
+                    counterPOS++;
+                }
+                else
+                {
+                    // Convert to Double and save them 
+                    EcatVoutPOS[counterPOS] = Convert.ToDouble(POS_Data[EcatValuePoint]);
+
+                    // Round it 3 decimal digit 
+                    EcatVoutPOS[counterPOS] = System.Math.Round(EcatVoutPOS[counterPOS], 3);
+                    counterPOS++;
+                }
+
+                // ----> Negative
+                if (NEG_NeedToTrim)
+                {
+                    // Trim Special Char
+                    NEG_Data[EcatValuePoint] = NEG_Data[EcatValuePoint].Trim(charToTrim);
+
+                    // Convert to Double and save them 
+                    EcatVoutNEG[counterNEG] = Convert.ToDouble(NEG_Data[EcatValuePoint]);
+
+                    // Round it 3 decimal digit 
+                    EcatVoutNEG[counterNEG] = System.Math.Round(EcatVoutNEG[counterNEG], 3);
+
+                    counterNEG++;
+                }
+                else
+                {
+                    // Convert to Double and save them 
+                    EcatVoutNEG[counterNEG] = Convert.ToDouble(NEG_Data[EcatValuePoint]);
+
+                    // Round it 3 decimal digit 
+                    EcatVoutNEG[counterNEG] = System.Math.Round(EcatVoutNEG[counterNEG], 3);
+                    counterNEG++;
+                }
+
+                // ----> Vdiff + CTout 
+                if (Vdiff_Bias_NeedToTrim)
+                {
+
+                    // Trim Special Char
+                    Vdiff_Data[EcatValuePoint] = Vdiff_Data[EcatValuePoint].Trim(charToTrim);
+                    CTout_Data[EcatValuePoint] = CTout_Data[EcatValuePoint].Trim(charToTrim);
+
+                    // Convert to Double and save them 
+                    EcatVdiff[counterBIAS] = Convert.ToDouble(Vdiff_Data[EcatValuePoint]);
+                    EcatCTout[counterBIAS] = Convert.ToDouble(CTout_Data[EcatValuePoint]);
+
+                    // Round it 3 decimal digit 
+                    EcatVdiff[counterBIAS] = System.Math.Round(EcatVdiff[counterBIAS], 3);
+                    EcatCTout[counterBIAS] = System.Math.Round(EcatCTout[counterBIAS], 3);
+
+                    counterBIAS++;
+                }
+                else
+                {
+                    // Convert to Double and save them 
+                    EcatVdiff[counterBIAS] = Convert.ToDouble(Vdiff_Data[EcatValuePoint]);
+                    EcatCTout[counterBIAS] = Convert.ToDouble(CTout_Data[EcatValuePoint]);
+
+                    // Round it 3 decimal digit 
+                    EcatVdiff[counterBIAS] = System.Math.Round(EcatVdiff[counterBIAS], 3);
+                    EcatCTout[counterBIAS] = System.Math.Round(EcatCTout[counterBIAS], 3);
+                    counterBIAS++;
+
+                }
+
+                // ----> SetPoint
+                if (SetPointNeedToTrim)
+                {
+                    // Trim Special char 
+                    Clamp[EcatValuePoint] = Clamp[EcatValuePoint].Trim(charToTrim);
+                    Bias[EcatValuePoint] = Bias[EcatValuePoint].Trim(charToTrim);
+
+                    // Convert to Double and Save
+                    ClampSetPoint[counterSetPoint] = Convert.ToDouble(Clamp[EcatValuePoint]);
+                    BiasSetPoint[counterSetPoint] = Convert.ToDouble(Bias[EcatValuePoint]);
+                    counterSetPoint++;
+
+                }
+                else
+                {
+                    // Convert to Double and Save
+                    ClampSetPoint[counterSetPoint] = Convert.ToDouble(Clamp[EcatValuePoint]);
+                    BiasSetPoint[counterSetPoint] = Convert.ToDouble(Bias[EcatValuePoint]);
+                    counterSetPoint++;
+                }
+
+                
+            } // End FOR Loop
         }
 
+        // Ecat Get result 
+        public void GetEcatResult()
+        {
+            // ------> Initalize the index 
+            string[] csvLine = System.IO.File.ReadAllLines(_filePath);
+            int csvLine_Size = csvLine.Length;
+
+
+            // -----> Ecat Reading Result 
+            string[] POS_Result = csvLine[EcatResultVoutPOS_Index].Split(',');
+            string[] NEG_Result = csvLine[EcatResultVoutNEG_Index].Split(',');
+            string[] Vdiff_Result = csvLine[EcatResultVdiff_Index].Split(',');
+            string[] CTout_Result = csvLine[EcatResultCTout_Index].Split(',');
+
+
+            // Trim the special Character '|'
+            char[] charToTrim = { '|' };
+
+
+            int counterResult = 0;
+            for (int EcatValuePoint = 1; EcatValuePoint < CTout_Result.Length; EcatValuePoint++)
+            {
+                bool ResultNeedToTrim = POS_Result[EcatValuePoint].Contains('|') &&
+                                        NEG_Result[EcatValuePoint].Contains('|') &&
+                                        Vdiff_Result[EcatValuePoint].Contains('|') &&
+                                        CTout_Result[EcatValuePoint].Contains('|');
+
+
+                if (ResultNeedToTrim)
+                {
+                    // Trim special char 
+                    POS_Result[EcatValuePoint] = POS_Result[EcatValuePoint].Trim(charToTrim);
+                    NEG_Result[EcatValuePoint] = NEG_Result[EcatValuePoint].Trim(charToTrim);
+                    Vdiff_Result[EcatValuePoint] = Vdiff_Result[EcatValuePoint].Trim(charToTrim);
+                    CTout_Result[EcatValuePoint] = CTout_Result[EcatValuePoint].Trim(charToTrim);
+
+                    // Coppy array 
+                    EcatResultVoutPOS[counterResult] = POS_Result[EcatValuePoint];
+                    EcatResultVoutNEG[counterResult] = NEG_Result[EcatValuePoint];
+                    EcatResultVdiff[counterResult] = Vdiff_Result[EcatValuePoint];
+                    EcatResultCTout[counterResult] = CTout_Result[EcatValuePoint];
+                }
+                else
+                {
+                    // Coppy array 
+                    EcatResultVoutPOS[counterResult] = POS_Result[EcatValuePoint];
+                    EcatResultVoutNEG[counterResult] = NEG_Result[EcatValuePoint];
+                    EcatResultVdiff[counterResult] = Vdiff_Result[EcatValuePoint];
+                    EcatResultCTout[counterResult] = CTout_Result[EcatValuePoint];
+                }
+
+                counterResult++;
+            }
+
+
+        }// End Function 
+
+        // Calculate Ecat Boundary through MeterReading 
+        public void GetEcatBoundary()
+        {
+            MeterReading objMeter = new MeterReading(_filePath, _dirPath);
+            objMeter.ConvertMeterReadingInto_Double();
+            objMeter.GetMeterResult();
+
+            for (int ecatValuePoint = 0; ecatValuePoint < EcatVdiff.Length; ecatValuePoint++)
+            {
+                // Positive Boundary 
+                EcatVoutPOS_H[ecatValuePoint] = Math.Round(objMeter.MeterVoutPOS[ecatValuePoint] * 1.005,3);
+                EcatVoutPOS_L[ecatValuePoint] = Math.Round(objMeter.MeterVoutPOS[ecatValuePoint] * 0.995, 3);
+
+                // Negative Boundary 
+                EcatVoutNEG_H[ecatValuePoint] = Math.Round(objMeter.MeterVoutNEG[ecatValuePoint] * 1.005, 3);
+                EcatVoutNEG_L[ecatValuePoint] = Math.Round(objMeter.MeterVoutNEG[ecatValuePoint] * 0.995, 3);
+
+                // Vdiff Boundary 
+                EcatVdiff_H[ecatValuePoint] = Math.Round(objMeter.MeterVdiff[ecatValuePoint] * 1.005, 3);
+                EcatVdiff_L[ecatValuePoint] = Math.Round(objMeter.MeterVdiff[ecatValuePoint] * 0.995, 3);
+
+                // CT Boundary
+                EcatCTout_H[ecatValuePoint] = Math.Round(objMeter.MeterVbias[ecatValuePoint] * 1.005, 3);
+                EcatCTout_L[ecatValuePoint] = Math.Round(objMeter.MeterVbias[ecatValuePoint] * 0.995, 3);
+
+                /*Console.WriteLine($"{EcatVoutPOS_H[ecatValuePoint]}\t{EcatVoutPOS_L[ecatValuePoint]}"+
+                                  $"\t{ EcatVoutNEG_H[ecatValuePoint]}\t{EcatVoutNEG_L[ecatValuePoint]}" +
+                                  $"\t{EcatVdiff_H[ecatValuePoint]}\t{EcatVdiff_L[ecatValuePoint]}" +
+                                  $"\t{EcatCTout_H[ecatValuePoint]}\t{EcatCTout_L[ecatValuePoint]}");*/
+            }
+
+            
+        }
+
+
     }
+
+
 
     public class MeterReading
     {

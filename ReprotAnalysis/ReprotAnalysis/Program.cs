@@ -157,12 +157,25 @@ namespace ReportAnalysis
 
             }
 
-          
+            EcatReading objEcat = new EcatReading(pathToSerialNumberFolder, "sampple");
+
+            objEcat.GetEcatBoundary();
+            objEcat.ConvertEcatReadingInto_Double();
+            objEcat.GetEcatResult();
+
+            for (int i = 0; i < objEcat.EcatVoutNEG.Length; i++)
+            {
+                Console.WriteLine($"{objEcat.EcatResultVoutPOS[i]}" +
+                                  $"\t{objEcat.EcatResultVoutNEG[i]}" +
+                                  $"\t{objEcat.EcatResultVdiff[i]}" +
+                                  $"\t{objEcat.EcatResultCTout[i]}");
+            }
+
 
             Console.ReadKey();
 
 
-
+            
         }
     }
 }
