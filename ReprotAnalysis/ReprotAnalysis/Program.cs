@@ -18,7 +18,7 @@ namespace ReportAnalysis
         {
             Console.WriteLine("Bicep Report Analysis Test ");
 
-            string pathToSerialNumberFolder = @"C:\Bicep_Project\ReprotApplication\Bicep_Data\SN_22040007_FAIL2 _STATION1\Main_FULL.csv";
+            string pathToSerialNumberFolder = @"C:\Users\bang.nguyen\OneDrive - XP Power\Desktop\Bicept project\ReprotApplication\Bicep_Data\SN_22040007_FAIL2 _STATION1\Main_FULL.csv";
             string setpoint8kv = "";
             string setpoint3kv = "";
 

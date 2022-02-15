@@ -371,10 +371,7 @@ namespace ParseMainFULL
                 EcatCTout_H[ecatValuePoint] = Math.Round(objMeter.MeterVbias[ecatValuePoint] * 1.005, 3);
                 EcatCTout_L[ecatValuePoint] = Math.Round(objMeter.MeterVbias[ecatValuePoint] * 0.995, 3);
 
-                /*Console.WriteLine($"{EcatVoutPOS_H[ecatValuePoint]}\t{EcatVoutPOS_L[ecatValuePoint]}"+
-                                  $"\t{ EcatVoutNEG_H[ecatValuePoint]}\t{EcatVoutNEG_L[ecatValuePoint]}" +
-                                  $"\t{EcatVdiff_H[ecatValuePoint]}\t{EcatVdiff_L[ecatValuePoint]}" +
-                                  $"\t{EcatCTout_H[ecatValuePoint]}\t{EcatCTout_L[ecatValuePoint]}");*/
+                
             }
 
             
@@ -383,7 +380,30 @@ namespace ParseMainFULL
 
     }
 
+    /* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 
+    /* --------------------------- METER READING SECTION ( 1% error ) --------------------------------
+     * Meter Reading section need to monitor these value
+     * --> V_POS:
+     *          |---> V_POS_HIGH = Upper Boundary (included inside the Main_Full.csv) 
+     *          |---> V_POS_LOW  = Lower Boundary (included inside the Main_Full.csv)
+     *
+     * --> V_NEG:
+     *          |---> V_NEG_HIGH = Upper Boundary (included inside the Main_Full.csv)
+     *          |---> V_NEG_LOW  = Lower Boundary (included inside the Main_Full.csv)
+     *
+     * ---> VBias:
+     *          |---> V_Bias_HIGH = Upper Boundary (Bias_Setpoint * 1.01 )
+     *          |---> V_Bias_LOW  = Lower Boundary (Bias_Setpoint * 0.99)
+     *
+     * ---> Vdiff_cal
+     *          |---> Vdiff is calculated ff
+     *
+     *------------------------------------------------------------------------------------------/
+
+
+
+    /* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 
     public class MeterReading
     {
