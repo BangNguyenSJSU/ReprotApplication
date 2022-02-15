@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Bicep_Project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\ReportAnalysis.csproj": {}
+    "C:\\Users\\bang.nguyen\\OneDrive - XP Power\\Desktop\\Bicept project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\ReportAnalysis.csproj": {}
   },
   "projects": {
-    "C:\\Bicep_Project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\ReportAnalysis.csproj": {
+    "C:\\Users\\bang.nguyen\\OneDrive - XP Power\\Desktop\\Bicept project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\ReportAnalysis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Bicep_Project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\ReportAnalysis.csproj",
+        "projectUniqueName": "C:\\Users\\bang.nguyen\\OneDrive - XP Power\\Desktop\\Bicept project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\ReportAnalysis.csproj",
         "projectName": "ReportAnalysis",
-        "projectPath": "C:\\Bicep_Project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\ReportAnalysis.csproj",
-        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "C:\\Bicep_Project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\obj\\",
+        "projectPath": "C:\\Users\\bang.nguyen\\OneDrive - XP Power\\Desktop\\Bicept project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\ReportAnalysis.csproj",
+        "packagesPath": "C:\\Users\\bang.nguyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bang.nguyen\\OneDrive - XP Power\\Desktop\\Bicept project\\ReprotApplication\\ReprotAnalysis\\ReprotAnalysis\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bang.nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
